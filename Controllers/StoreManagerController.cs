@@ -19,7 +19,6 @@ namespace MvcMusicStore.Controllers
         public ActionResult Index()
         {
             var albums = db.Albums.Include(a => a.Genre).Include(a => a.Artist);
-            //var albums = db.Albums.Include(a => a.Genre);
             return View(albums.ToList());
         }
 
@@ -129,6 +128,5 @@ namespace MvcMusicStore.Controllers
             db.Dispose();
             base.Dispose(disposing);
         }
-
     }
 }
