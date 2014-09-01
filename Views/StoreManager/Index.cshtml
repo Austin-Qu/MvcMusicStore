@@ -1,10 +1,19 @@
 ﻿@model IEnumerable<MvcMusicStore.Models.Album>
 
-@{
-    ViewBag.Title = "Index";
+@helper Truncate (string input, int length) {
+    if(input.Length < length) {
+        @input;
+    }
+    else {
+        @input.Substring(0, length)<text>...</text>
+    }
 }
 
-<h2>Index</h2>
+@{
+    ViewBag.Title = "Manage CP";
+}
+
+<h2>Manage CP</h2>
 
 <p>
     @Html.ActionLink("Create New", "Create")
@@ -34,10 +43,12 @@
             @Html.DisplayFor(modelItem => item.Genre.Name)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Artist.Name)
+            @*@Html.DisplayFor(modelItem => item.Artist.Name)*@
+            @Truncate(item.Artist.Name, 25)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Title)
+            @*@Html.DisplayFor(modelItem => item.Title)*@
+            @Truncate(item.Title, 25)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.Price)
